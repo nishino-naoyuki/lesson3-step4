@@ -1,0 +1,114 @@
+<!-- header nav -->
+<header id="headerNav" th:fragment="headerNav" class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a th:href="@{/}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 512 512" style="width: 48px; height: 48px; opacity: 1;" xml:space="preserve">
+          <style type="text/css">
+            .st0 {
+              fill: #4B4B4B;
+            }
+          </style>
+          <g>
+            <path class="st0" d="M255.988,0C114.836,0,0.004,114.832,0.004,256c0,141.152,114.832,256,255.984,256
+                  c141.168,0,256.008-114.848,256.008-256C511.996,114.832,397.156,0,255.988,0z M196.028,371.082h-55.097v-55.097L277.003,179.93
+                  l55.096,55.08L196.028,371.082z M363.242,203.867l-16.135,16.128l-55.097-55.096l16.136-16.144
+                  c10.442-10.434,27.407-10.45,37.848,0l17.248,17.248C373.683,176.444,373.683,193.409,363.242,203.867z"
+              style="fill: rgb(75, 75, 75);"></path>
+          </g>
+        </svg>
+        <span class="fs-4 m-2">Your Portal</span>
+      </a>
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a th:href="@{/}" class="nav-link px-2 link-secondary">Dashboard</a></li>
+        <li><a th:href="@{/lesson}" class="nav-link px-2 link-dark">Lesson</a></li>
+        <li><a th:href="@{/archievement}" class="nav-link px-2 link-dark">Archievement</a></li>
+      </ul>
+      <div class="dropdown text-end">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person-circle" style="font-size: 32px; color: cornflowerblue;"></i>
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <li>
+            <!-- spring security 有効時に使用 -->
+            <!-- <form method="post" name="logout" id="logout" th:action="@{/logout}">
+              <a href="javascript:logout.submit()" class="dropdown-item">Sign out</a>
+            </form> -->
+            <a href="#" class="dropdown-item">Sign out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- side menu -->
+<nav id="sidebarMenu" th:fragment="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+  style="height: 800px;">
+  <div class="position-sticky pt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" th:href="@{/}">
+          <i class="bi bi-house-door-fill"></i>
+          Dashboard
+        </a>
+      </li>
+    </ul>
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>管理</span>
+      <a class="link-secondary" href="#" aria-label="Add a new report">
+        <span data-feather="plus-circle"></span>
+      </a>
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/lesson}">
+          <i class="bi bi-table"></i>
+          Lesson
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/archievement}">
+          <i class="bi bi-mortarboard-fill"></i>
+          Archievement
+        </a>
+      </li>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- page title -->
+<div class="pt-3 pb-2 mb-3 border-bottom" th:fragment="title(title)">
+  <h1 class="h2" th:text="${title}">Dashboard</h1>
+</div>
+
+<!-- header -->
+
+<head th:fragment="head">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- favicon -->
+  <link rel="icon" th:href="@{/favicon/favicon.ico}">
+  <!-- css -->
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+  <title>YOUR PORTAL</title>
+</head>
+
+<!-- script -->
+<th:block th:fragment="script">
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</th:block>

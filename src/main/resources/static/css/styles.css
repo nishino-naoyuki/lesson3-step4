@@ -1,0 +1,27 @@
+/*
+ * -- BASE STYLES --
+ */
+body {
+  background-color: beige;
+  color: #526066;
+}
+
+.welcome-text {
+  font-family: "Manrope", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 38px;
+  color: #8D8D8D;
+  margin-bottom: 10px;
+}
+
+.welcome-sub-text {
+  font-family: "Manrope", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #8D8D8D;
+  margin-bottom: 0;
+}

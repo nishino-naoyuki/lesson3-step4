@@ -1,0 +1,8 @@
+Dockerfile
+README.md
+.idea
+.gradle
+build
+.devcontainer
+.vscode
+.gitignore

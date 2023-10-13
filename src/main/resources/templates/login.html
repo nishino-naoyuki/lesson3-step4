@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" th:href="@{/favicon/favicon.ico}">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+  <title>login</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #f5f5f5;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: auto;
+    }
+
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+
+    .form-signin .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  </style>
+</head>
+
+<body class="text-center">
+  <form th:action="@{/login}" method="post" class="form-signin">
+    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+      y="0px" viewBox="0 0 512 512" style="width: 75px; height: 75px; opacity: 1;" xml:space="preserve">
+      <style type="text/css">
+        .st0 {
+          fill: #4B4B4B;
+        }
+      </style>
+      <g>
+        <path class="st0" d="M255.988,0C114.836,0,0.004,114.832,0.004,256c0,141.152,114.832,256,255.984,256
+            c141.168,0,256.008-114.848,256.008-256C511.996,114.832,397.156,0,255.988,0z M196.028,371.082h-55.097v-55.097L277.003,179.93
+            l55.096,55.08L196.028,371.082z M363.242,203.867l-16.135,16.128l-55.097-55.096l16.136-16.144
+            c10.442-10.434,27.407-10.45,37.848,0l17.248,17.248C373.683,176.444,373.683,193.409,363.242,203.867z"
+          style="fill: rgb(75, 75, 75);"></path>
+      </g>
+    </svg>
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="username" class="sr-only">ユーザー名</label>
+    <input type="text" id="username" name="username" class="form-control" placeholder="user name" required autofocus>
+    <label for="password" class="mt-2 sr-only">パスワード</label>
+    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+    <div th:if="${param.error}" class="mb-2">
+      Invalid username and password.
+    </div>
+    <div th:if="${param.logout}" class="mb-2 text-muted">You have been logged out.</div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+  <div th:replace="/layout :: script"></div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="/layout :: head"></head>
+
+<body>
+  <div th:replace="layout::headerNav"></div>
+
+  <div class="container">
+    <div class="row">
+      <div th:replace="layout::sidebarMenu"></div>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div th:replace="layout::title(授業管理)"></div>
+        <div class="form-container w-50">
+          <form method="post" action="#" th:action="@{/lesson/insert}" th:object="${lessonForm}" class="row g-3">
+            <div class="col-md-6">
+              <label for="name" class="form-label">授業名</label>
+              <input type="text" class="form-control" th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''"
+                id="name" name="name" th:value="*{name}">
+              <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="teacher" class="form-label">担当</label>
+              <input type="text" class="form-control"
+                th:classappend="${#fields.hasErrors('teacher')} ? 'is-invalid' : ''" id="teacher" name="teacher"
+                th:value="*{teacher}">
+              <div th:if="${#fields.hasErrors('teacher')}" th:errors="*{teacher}" class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-3">
+              <label for="day" class="form-label">曜日</label>
+              <select class="form-select" id="day" name="day"
+                th:classappend="${#fields.hasErrors('day')} ? 'is-invalid' : ''">
+                <option selected disabled value="">Choose...</option>
+                <option value="1" th:selected="*{day == 1}">月</option>
+                <option value="2" th:selected="*{day == 2}">火</option>
+                <option value="3" th:selected="*{day == 3}">水</option>
+                <option value="4" th:selected="*{day == 4}">木</option>
+                <option value="5" th:selected="*{day == 5}">金</option>
+              </select>
+              <div th:if="${#fields.hasErrors('day')}" th:errors="*{day}" class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-3">
+              <label for="period" class="form-label">時間</label>
+              <select class="form-select" id="period" name="period"
+                th:classappend="${#fields.hasErrors('period')} ? 'is-invalid' : ''">
+                <option selected disabled value="">Choose...</option>
+                <option value="1" th:selected="*{period == 1}">1</option>
+                <option value="2" th:selected="*{period == 2}">2</option>
+                <option value="3" th:selected="*{period == 3}">3</option>
+                <option value="4" th:selected="*{period == 4}">4</option>
+                <option value="5" th:selected="*{period == 5}">5</option>
+              </select>
+              <div th:if="${#fields.hasErrors('period')}" th:errors="*{period}" class="invalid-feedback"></div>
+            </div>
+            <div class="col-12 d-flex justify-content-between px-4">
+              <a class="btn btn-outline-primary" th:href="@{/lesson}">
+                戻る
+              </a>
+              <button class="btn btn-primary" type="submit">登録</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+<div th:replace="/layout :: script"></div>
+
+</html>

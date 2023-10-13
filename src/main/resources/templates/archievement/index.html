@@ -1,0 +1,51 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="/layout :: head"></head>
+
+<body>
+  <div th:replace="layout::headerNav"></div>
+  <div class="container">
+    <div class="row">
+      <div th:replace="layout::sidebarMenu"></div>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div th:replace="layout::title(実績管理)"></div>
+        <a class="btn btn-secondary" th:href="@{/archievement/new}">+ New</a>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">資格・成果物・実績</th>
+                <th scope="col">memo（github urlなど）</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="archievement : ${archievementList}">
+                <td th:text="${archievement.id}" scope="row"></td>
+                <td th:text="${archievement.name}"></td>
+                <td th:text="${archievement.memo}"></td>
+                <td>
+                  <a class="btn btn-info rounded-circle p-0 pt-1"
+                    th:href="@{/archievement/detail/{id}(id=${archievement.id})}" style="width:2rem; height:2rem;">
+                    <i class="bi bi-pencil-fill"></i>
+                  </a>
+                  <a class="btn btn-outline-secondary rounded-circle p-0 pt-1"
+                    th:href="@{/archievement/delete?id={id}(id=${archievement.id})}" style="width:2rem; height:2rem;">
+                    <i class="bi bi-trash-fill"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+<div th:replace="/layout :: script"></div>
+
+</html>

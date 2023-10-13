@@ -1,0 +1,121 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="/layout :: head"></head>
+
+<body>
+  <div class="vh-100">
+    <div th:replace="layout::headerNav"></div>
+    <div class="container">
+      <div class="row h-100">
+        <div th:replace="layout::sidebarMenu"></div>
+        <div class="container col-md-9 col-lg-10">
+          <div th:replace="layout::title(Dashboard)"></div>
+          <div class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+            <p class="welcome-text m-4">
+              <i class="bi-alarm m-3" style="font-size: 2rem; color: cornflowerblue;"></i>
+              <span th:text="${greeting}">あいさつ</span>, <span class="text-black fw-bold" th:text="${name}">名前</span>さん
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 mb-4">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="card mb-4">
+                    <div class="card-body p-4">
+                      <h5 class="card-title fs-4 fw-semibold">本日の授業</h5>
+                      <div class="card-subtitle text-disabled p-2"
+                        th:text="|${date.getYear()}/${date.getMonthValue()}/${date.getDayOfMonth()} (${dayOfWeek})|">
+                        2021/8/9 (火)
+                      </div>
+                      <table class="table table-borderless w-50">
+                        <tbody>
+                          <tr th:each="lesson : ${lessonList}">
+                            <td th:text="|${lesson.period}限|"></td>
+                            <td th:text="${lesson.name}"></td>
+                            <td th:text="|${lesson.teacher}先生|"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                  <div class="card mb-4 h-100">
+                    <div class="card-body p-4">
+                      <div class="row">
+                        <div class="col">
+                          <div class="card-title fs-4 fw-semibold">おみくじ</div>
+                          <div class="card-subtitle text-disabled fs-5">
+                            <span class="text-black fw-bold" th:text="${omikuji}">運勢</span>
+                          </div>
+                        </div>
+                        <div class="col text-end text-primary fs-4 fw-semibold pr-2">
+                          <i th:class="'bi bi-'+${omikujiIcon}" style="font-size: 2.5rem; color: cornflowerblue;"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="card mb-4 h-100">
+                    <div class="card-body p-4">
+                      <div class="row">
+                        <div class="col">
+                          <div class="card-title fs-4 fw-semibold">天気</div>
+                          <div class="card-subtitle text-disabled" th:text="${weather.forecast}">天気</div>
+                          <div class="card-text" th:text="${weather.city}">都市</div>
+                        </div>
+                        <div class="col text-end text-primary fs-4 fw-semibold">
+                          <img th:src="${weather.image}" alt="weather" width="70" height="70" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+              <div class="row h-100">
+                <div class="col-lg-12">
+                  <div class="card h-100 mb-4">
+                    <div class="card-body p-4">
+                      <h5 class="card-title fs-4 fw-semibold">TODO</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 mb-4">
+              <div class="row h-100">
+                <div class="col-lg-12">
+                  <div class="card h-100 mb-4">
+                    <div class="card-body p-4">
+                      <h5 class="card-title fs-4 fw-semibold">実績</h5>
+                      <table class="table table-borderless w-50">
+                        <tbody>
+                          <!-- 実績表示 -->
+                          <tr>
+                            <td></td><!-- 実績名 -->
+                            <td></td><!-- メモ -->
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+<div th:replace="/layout :: script"></div>
+
+</html>

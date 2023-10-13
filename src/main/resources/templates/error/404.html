@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Error</title>
+</head>
+
+<body>
+  <h1 th:text="${status} + ' ' + ${error}">404 Not Found</h1>
+  <p>ページが見つかりません。URLが誤っていないか確認してみましょう。</p>
+
+  <p><a th:href="@{/}">Topへ戻る</a></p>
+</body>
+
+</html>
